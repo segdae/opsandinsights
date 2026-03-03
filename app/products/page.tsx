@@ -72,8 +72,49 @@ export default function ProductsPage() {
         you can use today.
       </p>
 
-      {/* ── Services ─────────────────────────────────────────────────────── */}
+      {/* ── Products ─────────────────────────────────────────────────────── */}
       <section className="mt-14">
+        <h2 className="font-serif text-2xl font-bold text-primary mb-1">
+          Products
+        </h2>
+        <p className="text-sm text-secondary mb-8">
+          Digital products you can pick up and use straight away.
+        </p>
+
+        <div className="grid sm:grid-cols-2 gap-4">
+          {PRODUCTS.map((product) => (
+            <Link
+              key={product.title}
+              href={product.href}
+              {...(product.external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+              className="group border border-gray-200 rounded-2xl px-6 py-5 hover:border-green-primary transition-colors flex flex-col"
+            >
+              <div className="flex items-start justify-between gap-4 mb-2">
+                <span className="text-xs bg-green-subtle text-green-primary px-2 py-0.5 rounded-full">
+                  {product.badge}
+                </span>
+                <span className="text-secondary group-hover:text-green-primary transition-colors text-lg leading-none">
+                  →
+                </span>
+              </div>
+              <h3 className="font-semibold text-primary group-hover:text-green-primary transition-colors mt-1">
+                {product.title}
+              </h3>
+              <p className="mt-2 text-sm text-secondary leading-relaxed">
+                {product.description}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Divider */}
+      <hr className="my-14 border-gray-100" />
+
+      {/* ── Services ─────────────────────────────────────────────────────── */}
+      <section>
         <h2 className="font-serif text-2xl font-bold text-primary mb-1">
           Services
         </h2>
@@ -119,47 +160,6 @@ export default function ProductsPage() {
           >
             Get in touch →
           </Link>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <hr className="my-14 border-gray-100" />
-
-      {/* ── Products ─────────────────────────────────────────────────────── */}
-      <section>
-        <h2 className="font-serif text-2xl font-bold text-primary mb-1">
-          Products
-        </h2>
-        <p className="text-sm text-secondary mb-8">
-          Digital products you can pick up and use straight away.
-        </p>
-
-        <div className="grid sm:grid-cols-2 gap-4">
-          {PRODUCTS.map((product) => (
-            <Link
-              key={product.title}
-              href={product.href}
-              {...(product.external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-              className="group border border-gray-200 rounded-2xl px-6 py-5 hover:border-green-primary transition-colors flex flex-col"
-            >
-              <div className="flex items-start justify-between gap-4 mb-2">
-                <span className="text-xs bg-green-subtle text-green-primary px-2 py-0.5 rounded-full">
-                  {product.badge}
-                </span>
-                <span className="text-secondary group-hover:text-green-primary transition-colors text-lg leading-none">
-                  →
-                </span>
-              </div>
-              <h3 className="font-semibold text-primary group-hover:text-green-primary transition-colors mt-1">
-                {product.title}
-              </h3>
-              <p className="mt-2 text-sm text-secondary leading-relaxed">
-                {product.description}
-              </p>
-            </Link>
-          ))}
         </div>
       </section>
     </main>
