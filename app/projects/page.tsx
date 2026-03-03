@@ -6,9 +6,10 @@ import ProjectList from "@/components/ProjectList";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Projects | Ops & Insights",
+  title: "Projects",
   description:
     "Selected AI and automation consulting work — from intelligent document processing to enterprise AI strategy. Delivered at scale.",
+  alternates: { canonical: "/projects" },
 };
 
 type Project = {

@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import { sanityFetch } from "@/lib/sanity";
 import { getAllPosts, getAllPillars } from "@/sanity/lib/queries";
 import BlogPostList from "@/components/BlogPostList";
 
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Practitioner takes on AI, automation, and consulting. No fluff.",
+  alternates: { canonical: "/writing" },
+};
 
 type Pillar = {
   _id: string;

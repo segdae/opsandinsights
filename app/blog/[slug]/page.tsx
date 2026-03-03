@@ -139,6 +139,26 @@ export default async function BlogPostPage({
 
   const readingTime = calcReadingTime(post.body ?? []);
 
+  const canonicalUrl = `${SITE_URL}/blog/${post.slug.current}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt ?? "",
+    datePublished: post.publishedAt,
+    url: canonicalUrl,
+    author: {
+      "@type": "Person",
+      name: "Shea Campbell",
+      url: `${SITE_URL}/about`,
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Shea Campbell",
+      url: SITE_URL,
+    },
+  };
+
   // Only fetch related posts if this post belongs to a pillar
   const related =
     post.pillar && post.pillar.slug?.current
@@ -153,6 +173,10 @@ export default async function BlogPostPage({
 
   return (
     <main className="max-w-2xl mx-auto px-6 pt-16 pb-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ── Post header ─────────────────────────────────────────────────────── */}
       {post.pillar && (
         <span className="text-xs bg-green-subtle text-green-primary px-2 py-0.5 rounded-full">

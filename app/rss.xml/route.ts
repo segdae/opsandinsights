@@ -31,7 +31,7 @@ export async function GET() {
 
   const items = posts
     .map((post) => {
-      const url = `${SITE_URL}/blog/${post.slug.current}`;
+      const url = `${SITE_URL}/writing/${post.slug.current}`;
       const pubDate = new Date(post.publishedAt).toUTCString();
       // Wrap description in CDATA so any HTML/special chars in excerpts are safe
       const description = post.excerpt

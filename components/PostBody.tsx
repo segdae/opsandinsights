@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import { urlFor } from "@/lib/sanity";
 
@@ -66,10 +67,12 @@ const components: PortableTextComponents = {
       const src = urlFor(value).width(1360).url(); // 2× for retina on 680px column
       return (
         <figure className="my-8">
-          <img
+          <Image
             src={src}
             alt={value.alt ?? ""}
-            className="w-full rounded-lg"
+            width={1360}
+            height={765}
+            className="w-full h-auto rounded-lg"
             loading="lazy"
           />
           {value.caption && (
