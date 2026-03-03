@@ -40,6 +40,21 @@ export const getAllProjects = groq`
   }
 `;
 
+export const getAllServices = groq`
+  *[_type == "service"] | order(featured desc, order asc, name asc) {
+    _id,
+    name,
+    slug,
+    tagline,
+    description,
+    highlights,
+    ctaLabel,
+    ctaUrl,
+    featured,
+    image
+  }
+`;
+
 export const getAllTemplates = groq`
   *[_type == "template"] | order(featured desc, name asc) {
     _id,
