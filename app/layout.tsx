@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -71,6 +72,7 @@ export default function RootLayout({
         <div id="main-content" className="min-h-screen">{children}</div>
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
