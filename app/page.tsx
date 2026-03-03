@@ -161,13 +161,13 @@ export default async function Home() {
               href="/writing"
               className="text-sm font-medium bg-green-primary text-white px-5 py-2.5 rounded-full hover:bg-green-light transition-colors"
             >
-              Read the blog
+              Read my blog
             </Link>
             <Link
-              href="/cv"
+              href="/projects"
               className="text-sm font-medium border border-gray-300 text-primary px-5 py-2.5 rounded-full hover:border-green-primary hover:text-green-primary transition-colors"
             >
-              View my CV
+              View my projects
             </Link>
           </div>
         </div>
