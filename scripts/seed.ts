@@ -263,7 +263,7 @@ const SITE_SETTINGS = {
   authorName: "Shea Campbell",
   authorRole: "Senior Consultant — AI & Intelligent Automation",
   linkedinUrl: "https://linkedin.com/in/sheacampbell",
-  githubUrl: "https://github.com/sheacampbell",
+  githubUrl: "https://github.com/segdae",
 };
 
 // ─── Runner ───────────────────────────────────────────────────────────────

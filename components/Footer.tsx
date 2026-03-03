@@ -38,7 +38,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://github.com/sheacampbell"
+                href="https://github.com/segdae"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -133,7 +133,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/sheacampbell"
+                  href="https://github.com/segdae"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-secondary hover:text-primary transition-colors"

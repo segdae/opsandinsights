@@ -128,7 +128,7 @@ export default async function Home() {
       url: `${SITE_URL}/about`,
       sameAs: [
         "https://linkedin.com/in/sheacampbell",
-        "https://github.com/sheacampbell",
+        "https://github.com/segdae",
       ],
     },
   };
