@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { sanityFetch } from "@/lib/sanity";
 import { getCvEntries, getSiteSettings } from "@/sanity/lib/queries";
