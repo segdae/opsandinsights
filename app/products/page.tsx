@@ -2,44 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Work with me",
+  title: "Products & Resources — Ops & Insights",
   description:
-    "AI consulting and automation services, plus digital products for consultants and knowledge workers.",
+    "Notion templates, guides, checklists, and prompt libraries for consultants, operators, and knowledge workers.",
   alternates: { canonical: "/products" },
 };
-
-// ─── Services ────────────────────────────────────────────────────────────────
-
-const SERVICES = [
-  {
-    title: "AI Strategy & Consulting",
-    description:
-      "Helping organisations move from AI curiosity to working solutions. I map where AI creates real leverage, cut through the hype, and give you a clear implementation path.",
-    suitableFor: ["Enterprise teams", "SMEs", "Consulting firms"],
-    href: "/services/ai-strategy",
-  },
-  {
-    title: "Intelligent Automation",
-    description:
-      "End-to-end design and delivery of automation systems — from document intelligence pipelines to multi-step agentic workflows. Built to last, not just to demo.",
-    suitableFor: ["Operations teams", "Finance & legal", "Professional services"],
-    href: "/services/intelligent-automation",
-  },
-  {
-    title: "Solution Design",
-    description:
-      "Bespoke architecture for your AI or automation challenge. I scope the problem, design the solution, and produce a spec your team can build from — or I build it.",
-    suitableFor: ["CTOs & tech leads", "Project sponsors", "Internal innovation teams"],
-    href: "/services/solution-design",
-  },
-  {
-    title: "Notion Systems",
-    description:
-      "Custom Notion workspaces that actually get used. Project trackers, client portals, knowledge bases, and operating systems built for consultants and solo operators.",
-    suitableFor: ["Consultants", "Agencies", "Founders"],
-    href: "/services/notion-systems",
-  },
-];
 
 // ─── Products ─────────────────────────────────────────────────────────────────
 
@@ -47,33 +14,53 @@ const PRODUCTS = [
   {
     title: "Notion Templates",
     description:
-      "Plug-and-play Notion systems for consultants, operators, and knowledge workers. Ready to use in minutes.",
+      "Plug-and-play Notion systems with built-in AI agents for consultants, operators, and knowledge workers. Ready to use in minutes.",
     badge: "Templates",
     href: "/templates",
-    external: false,
+  },
+];
+
+// ─── Resources ────────────────────────────────────────────────────────────────
+
+const RESOURCES = [
+  {
+    title: "AI Tools for Consultants",
+    description:
+      "A curated guide to the AI tools worth using in consulting — from research to deliverables.",
+    badge: "Guide",
   },
   {
-    title: "Guides & Resources",
+    title: "Automation Readiness Checklist",
     description:
-      "Practical guides, checklists, and prompt libraries covering AI tools, automation, and consulting workflows.",
-    badge: "Free",
-    href: "/resources",
-    external: false,
+      "10 questions to figure out if a process is ready to automate — before you spend a penny.",
+    badge: "Checklist",
+  },
+  {
+    title: "Prompt Library for Business",
+    description:
+      "Battle-tested prompts for client work, content creation, analysis, and admin.",
+    badge: "Prompts",
+  },
+  {
+    title: "AI Implementation Playbook",
+    description:
+      "A step-by-step framework for taking AI from idea to production inside an organisation.",
+    badge: "Playbook",
   },
 ];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
-export default function ProductsPage() {
+export default function ProductsPage(): JSX.Element {
   return (
-    <main className="max-w-2xl mx-auto px-6 pt-16 pb-16">
+    <main className="max-w-3xl mx-auto px-6 pt-16 pb-16">
       {/* Header */}
       <h1 className="font-serif text-4xl font-bold text-primary tracking-tight">
-        Work with me
+        Products &amp; Resources
       </h1>
-      <p className="mt-3 text-lg text-secondary">
-        Services for teams serious about AI and automation, plus digital products
-        you can use today.
+      <p className="mt-3 text-lg text-secondary max-w-xl">
+        Digital products you can use today, plus free guides and tools for AI
+        and automation practitioners.
       </p>
 
       {/* ── Products ─────────────────────────────────────────────────────── */}
@@ -82,34 +69,62 @@ export default function ProductsPage() {
           Products
         </h2>
         <p className="text-sm text-secondary mb-8">
-          Digital products you can pick up and use straight away.
+          Notion templates powered by AI agents. Pay once, keep forever.
+        </p>
+
+        {PRODUCTS.map((product) => (
+          <Link
+            key={product.title}
+            href={product.href}
+            className="group block border border-gray-200 rounded-2xl px-6 py-5 hover:border-green-primary transition-colors"
+          >
+            <div className="flex items-start justify-between gap-4 mb-2">
+              <span className="text-xs bg-green-subtle text-green-primary px-2 py-0.5 rounded-full">
+                {product.badge}
+              </span>
+              <span className="text-secondary group-hover:text-green-primary transition-colors text-lg leading-none">
+                &rarr;
+              </span>
+            </div>
+            <h3 className="font-semibold text-primary group-hover:text-green-primary transition-colors mt-1">
+              {product.title}
+            </h3>
+            <p className="mt-2 text-sm text-secondary leading-relaxed">
+              {product.description}
+            </p>
+          </Link>
+        ))}
+      </section>
+
+      {/* Divider */}
+      <hr className="my-14 border-gray-100" />
+
+      {/* ── Resources ──────────────────────────────────────────────────── */}
+      <section>
+        <h2 className="font-serif text-2xl font-bold text-primary mb-1">
+          Free Resources
+        </h2>
+        <p className="text-sm text-secondary mb-8">
+          Guides, checklists, and prompt libraries — no sign-up required.
         </p>
 
         <div className="grid sm:grid-cols-2 gap-4">
-          {PRODUCTS.map((product) => (
-            <Link
-              key={product.title}
-              href={product.href}
-              {...(product.external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-              className="group border border-gray-200 rounded-2xl px-6 py-5 hover:border-green-primary transition-colors flex flex-col"
+          {RESOURCES.map((resource) => (
+            <div
+              key={resource.title}
+              className="border border-gray-200 rounded-2xl px-6 py-5"
             >
-              <div className="flex items-start justify-between gap-4 mb-2">
-                <span className="text-xs bg-green-subtle text-green-primary px-2 py-0.5 rounded-full">
-                  {product.badge}
-                </span>
-                <span className="text-secondary group-hover:text-green-primary transition-colors text-lg leading-none">
-                  →
-                </span>
-              </div>
-              <h3 className="font-semibold text-primary group-hover:text-green-primary transition-colors mt-1">
-                {product.title}
+              <span className="text-xs bg-gray-100 text-secondary px-2 py-0.5 rounded-full">
+                {resource.badge}
+              </span>
+              <h3 className="font-semibold text-primary mt-3">
+                {resource.title}
               </h3>
               <p className="mt-2 text-sm text-secondary leading-relaxed">
-                {product.description}
+                {resource.description}
               </p>
-            </Link>
+              <p className="mt-3 text-xs text-secondary">Coming soon</p>
+            </div>
           ))}
         </div>
       </section>
@@ -117,55 +132,22 @@ export default function ProductsPage() {
       {/* Divider */}
       <hr className="my-14 border-gray-100" />
 
-      {/* ── Services ─────────────────────────────────────────────────────── */}
-      <section>
-        <h2 className="font-serif text-2xl font-bold text-primary mb-1">
-          Services
+      {/* ── Services callout ───────────────────────────────────────────── */}
+      <section className="rounded-2xl bg-gray-50 px-8 py-10">
+        <h2 className="font-serif text-2xl font-bold text-primary">
+          Looking for consulting?
         </h2>
-        <p className="text-sm text-secondary mb-8">
-          Hands-on consulting and delivery — tailored to your situation.
+        <p className="mt-2 text-sm text-secondary leading-relaxed max-w-lg">
+          AI strategy, intelligent automation, solution design, and custom
+          Notion systems — hands-on consulting and delivery tailored to your
+          situation.
         </p>
-
-        <div className="space-y-4">
-          {SERVICES.map((service) => (
-            <Link
-              key={service.title}
-              href={service.href}
-              className="block border border-gray-200 rounded-2xl px-6 py-5 hover:border-green-primary transition-colors group"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="font-semibold text-primary group-hover:text-green-primary transition-colors">
-                  {service.title}
-                </h3>
-                <span className="text-secondary group-hover:text-green-primary transition-colors shrink-0 text-lg leading-none mt-0.5">
-                  →
-                </span>
-              </div>
-              <p className="mt-2 text-sm text-secondary leading-relaxed">
-                {service.description}
-              </p>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {service.suitableFor.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs bg-gray-100 text-secondary px-2 py-0.5 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="mt-8">
-          <Link
-            href="/about#contact"
-            className="inline-flex items-center gap-2 text-sm font-medium bg-green-primary text-white px-5 py-2.5 rounded-full hover:bg-green-light transition-colors"
-          >
-            Get in touch →
-          </Link>
-        </div>
+        <Link
+          href="/services"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-medium bg-green-primary text-white px-5 py-2.5 rounded-lg hover:bg-green-light transition-colors"
+        >
+          View services &rarr;
+        </Link>
       </section>
     </main>
   );
