@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { sanityFetch } from "@/lib/sanity";
-import { getSiteSettings, getLatestPosts, getAllTemplates } from "@/sanity/lib/queries";
+import { getSiteSettings, getLatestPosts } from "@/sanity/lib/queries";
 import NewsletterForm from "@/components/NewsletterForm";
 import CarouselSection, { type CarouselCard } from "@/components/CarouselSection";
 
@@ -29,16 +29,6 @@ type Post = {
   slug: { current: string };
   publishedAt: string;
   pillar?: { name: string; colour: string };
-};
-
-type Template = {
-  _id: string;
-  name: string;
-  slug?: { current: string };
-  description?: string;
-  price?: number;
-  gumroadUrl?: string;
-  category?: string;
 };
 
 // Placeholder resource cards until /resources has a Sanity schema
@@ -86,10 +76,9 @@ function formatDate(iso: string) {
 }
 
 export default async function Home() {
-  const [settings, posts, templates] = await Promise.all([
+  const [settings, posts] = await Promise.all([
     sanityFetch<SiteSettings | null>({ query: getSiteSettings }),
     sanityFetch<Post[]>({ query: getLatestPosts }),
-    sanityFetch<Template[]>({ query: getAllTemplates }),
   ]);
 
   const name = settings?.authorName ?? "Shea Campbell";
@@ -104,15 +93,6 @@ export default async function Home() {
     subtitle: formatDate(post.publishedAt),
     badge: post.pillar?.name,
     href: `/writing/${post.slug.current}`,
-  }));
-
-  const templateCards: CarouselCard[] = templates.map((t) => ({
-    id: t._id,
-    title: t.name,
-    subtitle: t.description,
-    badge: t.category,
-    href: t.gumroadUrl ?? (t.slug ? `/templates/${t.slug.current}` : "/templates"),
-    external: !!t.gumroadUrl,
   }));
 
   const jsonLd = {
@@ -202,14 +182,88 @@ export default async function Home() {
         cards={RESOURCE_CARDS}
       />
 
-      {/* ── Templates carousel ───────────────────────────────────────────── */}
-      <CarouselSection
-        heading="Templates"
-        viewAllHref="/templates"
-        viewAllLabel="View all templates"
-        cards={templateCards}
-        emptyMessage="Templates coming soon."
-      />
+      {/* ── Templates ─────────────────────────────────────────────────────── */}
+      <section className="mt-20">
+        <div className="flex items-baseline justify-between gap-4">
+          <h2 className="font-serif text-2xl font-bold text-primary">
+            Templates
+          </h2>
+          <Link
+            href="/templates"
+            className="text-sm text-green-primary hover:text-green-light transition-colors"
+          >
+            View all 16 templates &rarr;
+          </Link>
+        </div>
+        <p className="mt-2 text-secondary text-sm">
+          Notion templates with built-in AI agents. Pay once, keep forever.
+        </p>
+
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {[
+            {
+              name: "Agentic CRM",
+              tagline: "AI agents for lead scoring, email drafting, and pipeline automation.",
+              price: 99,
+              badge: "Flagship",
+              href: "/templates/agentic-crm",
+              bg: "bg-primary",
+              textColor: "text-white",
+              badgeStyle: "bg-white/15 text-white",
+            },
+            {
+              name: "Content Calendar",
+              tagline: "AI agent drafts. Calendar schedules. Repurposing engine multiplies.",
+              price: 29,
+              badge: "Popular",
+              href: "/templates/content-calendar",
+              bg: "bg-green-subtle",
+              textColor: "text-green-primary",
+              badgeStyle: "bg-green-primary/10 text-green-primary",
+            },
+            {
+              name: "Notion + AI Starter Kit",
+              tagline: "Connect Notion to Claude via MCP. Your first AI agent in 10 minutes.",
+              price: 0,
+              badge: "Free",
+              href: "/templates/ai-starter-kit",
+              bg: "bg-gray-50",
+              textColor: "text-primary",
+              badgeStyle: "bg-green-subtle text-green-primary",
+            },
+          ].map((t) => (
+            <Link
+              key={t.name}
+              href={t.href}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 hover:border-green-primary transition-colors"
+            >
+              <div className={`${t.bg} relative flex aspect-[3/2] items-end p-5`}>
+                {t.badge && (
+                  <span className={`absolute right-4 top-4 text-xs px-2 py-0.5 rounded-full ${t.badgeStyle}`}>
+                    {t.badge}
+                  </span>
+                )}
+                <p className={`font-serif text-lg font-bold tracking-tight ${t.textColor}`}>
+                  {t.name}
+                </p>
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <p className="text-sm text-secondary leading-relaxed flex-1">
+                  {t.tagline}
+                </p>
+                <div className="mt-4 flex items-center justify-between">
+                  <span className="text-sm font-semibold text-primary">
+                    {t.price === 0 ? "Free" : `$${t.price}`}
+                  </span>
+                  <span className="text-secondary group-hover:text-green-primary transition-colors text-lg leading-none">
+                    &rarr;
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* ── Newsletter ───────────────────────────────────────────────────── */}
       <section className="mt-20 bg-gray-50 rounded-2xl px-8 py-10">
