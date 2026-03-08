@@ -16,24 +16,28 @@ const SERVICES = [
     description:
       "Helping organisations move from AI curiosity to working solutions. I map where AI creates real leverage, cut through the hype, and give you a clear implementation path.",
     suitableFor: ["Enterprise teams", "SMEs", "Consulting firms"],
+    href: "/services/ai-strategy",
   },
   {
     title: "Intelligent Automation",
     description:
       "End-to-end design and delivery of automation systems — from document intelligence pipelines to multi-step agentic workflows. Built to last, not just to demo.",
     suitableFor: ["Operations teams", "Finance & legal", "Professional services"],
+    href: "/services/intelligent-automation",
   },
   {
     title: "Solution Design",
     description:
       "Bespoke architecture for your AI or automation challenge. I scope the problem, design the solution, and produce a spec your team can build from — or I build it.",
     suitableFor: ["CTOs & tech leads", "Project sponsors", "Internal innovation teams"],
+    href: "/services/solution-design",
   },
   {
     title: "Notion Systems",
     description:
       "Custom Notion workspaces that actually get used. Project trackers, client portals, knowledge bases, and operating systems built for consultants and solo operators.",
     suitableFor: ["Consultants", "Agencies", "Founders"],
+    href: "/services/notion-systems",
   },
 ];
 
@@ -124,9 +128,10 @@ export default function ProductsPage() {
 
         <div className="space-y-4">
           {SERVICES.map((service) => (
-            <div
+            <Link
               key={service.title}
-              className="border border-gray-200 rounded-2xl px-6 py-5 hover:border-green-primary transition-colors group"
+              href={service.href}
+              className="block border border-gray-200 rounded-2xl px-6 py-5 hover:border-green-primary transition-colors group"
             >
               <div className="flex items-start justify-between gap-4">
                 <h3 className="font-semibold text-primary group-hover:text-green-primary transition-colors">
@@ -149,7 +154,7 @@ export default function ProductsPage() {
                   </span>
                 ))}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
