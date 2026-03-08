@@ -8,11 +8,27 @@ export const metadata: Metadata = {
   alternates: { canonical: "/services/notion-systems" },
 };
 
-const problems: string[] = [
-  "You started with Notion full of enthusiasm. Now it's a graveyard of half-finished pages and abandoned databases.",
-  "Your project info lives in Notion, your tasks in Todoist, your notes in Apple Notes, and your CRM in a spreadsheet.",
-  "You've tried templates before — they looked great on the demo but didn't match how you actually work.",
-  "You spend more time managing your tools than doing the work the tools are supposed to help with.",
+const problems: { title: string; description: string }[] = [
+  {
+    title: "The graveyard workspace",
+    description:
+      "You started with Notion full of enthusiasm. Now it's a graveyard of half-finished pages and abandoned databases.",
+  },
+  {
+    title: "Tools everywhere",
+    description:
+      "Your project info lives in Notion, your tasks in Todoist, your notes in Apple Notes, and your CRM in a spreadsheet.",
+  },
+  {
+    title: "Templates that don't fit",
+    description:
+      "You've tried templates before — they looked great on the demo but didn't match how you actually work.",
+  },
+  {
+    title: "Managing the tools",
+    description:
+      "You spend more time managing your tools than doing the work the tools are supposed to help with.",
+  },
 ];
 
 const capabilities: { title: string; description: string }[] = [
@@ -93,6 +109,12 @@ const customItems: string[] = [
   "Full documentation and training included",
 ];
 
+const stats: { value: string; label: string }[] = [
+  { value: "Custom-built", label: "Designed around your workflow" },
+  { value: "Full training", label: "You maintain it yourself" },
+  { value: "Data migration", label: "From any tool into Notion" },
+];
+
 const faqs: { question: string; answer: string }[] = [
   {
     question: "How much does a custom Notion build cost?",
@@ -120,49 +142,62 @@ export default function NotionSystemsPage(): React.ReactElement {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-alt py-16 md:py-24">
+      <section className="bg-gray-50 py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-xs font-sans uppercase tracking-widest text-green-primary font-semibold mb-4">
+          <p className="text-xs font-sans uppercase tracking-widest text-green-primary font-semibold mb-5">
             Notion Systems
           </p>
           <h1 className="font-serif text-4xl md:text-5xl font-bold text-primary leading-tight mb-6">
-            Your Notion workspace has 47 pages. You use 4.
+            Your Notion workspace has 47&nbsp;pages. You use&nbsp;4.
           </h1>
-          <p className="text-lg text-secondary leading-relaxed mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
             I build custom Notion workspaces that consultants, agencies, and
             founders actually use every day. Project trackers, client portals,
             knowledge bases &mdash; systems that work the way you work.
           </p>
-          <Link
-            href="/about#contact"
-            className="inline-block bg-green-primary text-white rounded-full px-6 py-3 font-semibold hover:bg-green-light transition-colors"
-          >
-            Let&apos;s build your system &rarr;
-          </Link>
-          <p className="text-sm text-secondary mt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/about#contact"
+              className="inline-block bg-green-primary text-white rounded-lg px-6 py-3 font-semibold hover:bg-green-light transition-colors"
+            >
+              Let&apos;s build your system &rarr;
+            </Link>
+            <Link
+              href="#how-it-works"
+              className="inline-block border border-gray-300 text-primary rounded-lg px-6 py-3 font-semibold hover:border-gray-400 transition-colors"
+            >
+              See how it works
+            </Link>
+          </div>
+          <p className="text-sm text-secondary mt-6">
             I run my entire business on Notion. Every system I build, I&apos;d
             use myself.
           </p>
         </div>
       </section>
 
-      {/* Problem (PAS) */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-10">
+      {/* Problem */}
+      <section className="bg-white py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-12 text-center">
             Sound familiar?
           </h2>
-          <div className="space-y-4 mb-8">
+          <div className="grid gap-6 sm:grid-cols-2">
             {problems.map((problem): React.ReactElement => (
               <div
-                key={problem}
-                className="border-l-2 border-green-primary pl-5 py-3 bg-alt rounded-r-2xl"
+                key={problem.title}
+                className="shadow-sm rounded-xl border border-gray-100 p-6"
               >
-                <p className="text-primary leading-relaxed">{problem}</p>
+                <h3 className="font-semibold text-primary mb-2">
+                  {problem.title}
+                </h3>
+                <p className="text-secondary text-sm leading-relaxed">
+                  {problem.description}
+                </p>
               </div>
             ))}
           </div>
-          <p className="text-secondary text-lg leading-relaxed">
+          <p className="text-secondary text-lg leading-relaxed mt-12 text-center max-w-2xl mx-auto">
             The problem isn&apos;t Notion. The problem is building a workspace
             around templates instead of around your workflow. Off-the-shelf
             systems weren&apos;t designed for the way you work.
@@ -171,16 +206,16 @@ export default function NotionSystemsPage(): React.ReactElement {
       </section>
 
       {/* What I Build */}
-      <section className="bg-alt py-16 md:py-24">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-10">
+      <section className="bg-gray-50 py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-12 text-center">
             What I build
           </h2>
           <div className="grid gap-6 sm:grid-cols-2">
             {capabilities.map((item): React.ReactElement => (
               <div
                 key={item.title}
-                className="bg-white rounded-2xl border border-gray-200 p-6"
+                className="bg-white shadow-sm rounded-xl border border-gray-100 p-6"
               >
                 <h3 className="font-serif text-xl font-bold text-primary mb-2">
                   {item.title}
@@ -195,44 +230,95 @@ export default function NotionSystemsPage(): React.ReactElement {
       </section>
 
       {/* How It Works */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-10">
+      <section id="how-it-works" className="bg-white py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-16 text-center">
             How it works
           </h2>
-          <div className="relative">
-            {/* Connecting line */}
-            <div className="absolute left-5 top-0 bottom-0 w-px bg-gray-200" />
-            <div className="space-y-10">
-              {steps.map((step, index): React.ReactElement => (
-                <div key={step.title} className="relative pl-14">
-                  <div className="absolute left-0 top-0 w-10 h-10 rounded-full bg-green-primary text-white flex items-center justify-center font-bold text-lg z-10">
-                    {index + 1}
-                  </div>
-                  <h3 className="font-serif text-xl font-bold text-primary mb-1">
-                    {step.title}
-                  </h3>
-                  <p className="text-secondary leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+          <div className="grid gap-12 sm:grid-cols-2">
+            {steps.map((step, index): React.ReactElement => (
+              <div key={step.title} className="relative">
+                <span className="font-mono text-5xl font-bold text-primary/5 leading-none block mb-3">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-serif text-xl font-bold text-primary mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-secondary leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Comparison Table */}
+      <section className="bg-gray-50 py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-12 text-center">
+            Why custom beats off-the-shelf
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-8">
+            {/* Generic templates column */}
+            <div>
+              <h3 className="font-semibold text-secondary mb-6 text-sm uppercase tracking-wide">
+                Generic templates
+              </h3>
+              <div className="divide-y divide-gray-100">
+                {genericItems.map((item): React.ReactElement => (
+                  <div key={item} className="py-4 flex items-start gap-3">
+                    <span className="text-gray-300 mt-0.5 shrink-0">
+                      &times;
+                    </span>
+                    <span className="text-secondary text-sm line-through">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Custom systems column */}
+            <div>
+              <h3 className="font-semibold text-green-primary mb-6 text-sm uppercase tracking-wide">
+                Custom Notion systems
+              </h3>
+              <div className="divide-y divide-gray-100">
+                {customItems.map((item): React.ReactElement => (
+                  <div key={item} className="py-4 flex items-start gap-3">
+                    <span className="text-green-primary mt-0.5 shrink-0">
+                      &#10003;
+                    </span>
+                    <span className="text-primary text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <p className="text-secondary leading-relaxed mt-12 text-center">
+            Want something between a template and a custom build? Check out my{" "}
+            <Link
+              href="/templates"
+              className="text-green-primary underline hover:text-green-light transition-colors"
+            >
+              Notion templates
+            </Link>{" "}
+            &mdash; pre-built systems designed for common consulting workflows.
+          </p>
+        </div>
+      </section>
+
       {/* Who This Is For */}
-      <section className="bg-alt py-16 md:py-24">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-10">
+      <section className="bg-white py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-12 text-center">
             Who this is for
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
             {audiences.map((audience): React.ReactElement => (
               <div
                 key={audience.title}
-                className="bg-white rounded-2xl border border-gray-200 p-6"
+                className="bg-white shadow-sm rounded-xl border border-gray-100 p-6"
               >
                 <h3 className="font-serif text-xl font-bold text-primary mb-2">
                   {audience.title}
@@ -246,77 +332,39 @@ export default function NotionSystemsPage(): React.ReactElement {
         </div>
       </section>
 
-      {/* Why Custom Beats Templates */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-10">
-            Why custom beats off-the-shelf
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {/* Generic templates column */}
-            <div className="rounded-2xl border border-gray-200 p-6">
-              <h3 className="font-semibold text-secondary mb-4">
-                Generic templates
-              </h3>
-              <ul className="space-y-3">
-                {genericItems.map((item): React.ReactElement => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-secondary text-sm leading-relaxed"
-                  >
-                    <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-gray-300 shrink-0" />
-                    <span className="line-through">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* Custom systems column */}
-            <div className="rounded-2xl border-2 border-green-primary p-6">
-              <h3 className="font-semibold text-green-primary mb-4">
-                Custom Notion systems
-              </h3>
-              <ul className="space-y-3">
-                {customItems.map((item): React.ReactElement => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-primary text-sm leading-relaxed"
-                  >
-                    <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-green-primary shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* Proof Stats */}
+      <section className="bg-gray-50 py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="grid gap-8 sm:grid-cols-3 text-center">
+            {stats.map((stat): React.ReactElement => (
+              <div key={stat.value}>
+                <p className="font-serif text-3xl font-bold text-primary">
+                  {stat.value}
+                </p>
+                <p className="text-xs text-secondary mt-2 uppercase tracking-wide">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
           </div>
-          <p className="text-secondary leading-relaxed mt-8">
-            Want something between a template and a custom build? Check out my{" "}
-            <Link
-              href="/templates"
-              className="text-green-primary underline hover:text-green-light transition-colors"
-            >
-              Notion templates
-            </Link>{" "}
-            &mdash; pre-built systems designed for common consulting workflows.
-          </p>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="bg-alt py-16 md:py-24">
+      <section className="bg-white py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-10">
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-12 text-center">
             Common questions
           </h2>
-          <div className="space-y-4">
+          <div className="divide-y divide-gray-100">
             {faqs.map((faq): React.ReactElement => (
-              <div
-                key={faq.question}
-                className="bg-white rounded-2xl border border-gray-200 p-6"
-              >
+              <div key={faq.question} className="py-6">
                 <h3 className="font-semibold text-primary mb-2">
                   {faq.question}
                 </h3>
-                <p className="text-secondary leading-relaxed">{faq.answer}</p>
+                <p className="text-secondary leading-relaxed">
+                  {faq.answer}
+                </p>
               </div>
             ))}
           </div>
@@ -324,21 +372,31 @@ export default function NotionSystemsPage(): React.ReactElement {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-gray-50 py-20 md:py-28">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">
             Ready for a Notion workspace that actually works?
           </h2>
-          <p className="text-secondary text-lg mb-8">
+          <p className="text-secondary text-lg mb-10">
             Tell me what&apos;s not working. I&apos;ll show you what&apos;s
             possible.
           </p>
           <Link
             href="/about#contact"
-            className="inline-block bg-green-primary text-white rounded-full px-6 py-3 font-semibold hover:bg-green-light transition-colors"
+            className="inline-block bg-green-primary text-white rounded-lg px-6 py-3 font-semibold hover:bg-green-light transition-colors"
           >
             Get in touch &rarr;
           </Link>
+          <p className="text-sm text-secondary mt-6">
+            Or browse my{" "}
+            <Link
+              href="/templates"
+              className="text-green-primary underline hover:text-green-light transition-colors"
+            >
+              Notion templates
+            </Link>{" "}
+            for ready-made systems.
+          </p>
         </div>
       </section>
     </main>
