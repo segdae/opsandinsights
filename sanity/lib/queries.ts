@@ -31,6 +31,8 @@ export const getAllProjects = groq`
     title,
     slug,
     client,
+    summary,
+    category,
     challenge,
     approach,
     outcome,

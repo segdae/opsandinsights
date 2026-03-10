@@ -11,7 +11,7 @@ const nextConfig = {
     return [
       { source: "/blog", destination: "/writing", permanent: true },
       { source: "/blog/:slug", destination: "/writing/:slug", permanent: true },
-      { source: "/projects", destination: "/building", permanent: true },
+      { source: "/building", destination: "/projects", permanent: true },
     ];
   },
 };

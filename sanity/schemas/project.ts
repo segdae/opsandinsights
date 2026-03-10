@@ -24,6 +24,27 @@ export const project = defineType({
       description: 'e.g. "Global FMCG — Kenvue" or an anonymised label',
     }),
     defineField({
+      name: "summary",
+      title: "Summary",
+      type: "text",
+      rows: 2,
+      description: "One-line project summary for card view",
+      validation: (Rule) => Rule.max(250),
+    }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "string",
+      options: {
+        list: [
+          { title: "AI Engineering", value: "ai-engineering" },
+          { title: "Intelligent Automation", value: "intelligent-automation" },
+          { title: "Data & Analytics", value: "data-analytics" },
+          { title: "Strategy & Transformation", value: "strategy" },
+        ],
+      },
+    }),
+    defineField({
       name: "challenge",
       title: "Challenge",
       type: "text",
