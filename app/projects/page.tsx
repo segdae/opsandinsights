@@ -41,17 +41,6 @@ type SanityProject = {
 };
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Stats
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-const STATS = [
-  { value: "10+", label: "Projects delivered" },
-  { value: "£2M+", label: "Client value generated" },
-  { value: "6", label: "Industries" },
-  { value: "50K+", label: "Users impacted" },
-];
-
-/* ═══════════════════════════════════════════════════════════════════════════
    Page
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -73,20 +62,6 @@ export default async function ProjectsPage(): Promise<JSX.Element> {
           Selected work from AI, automation, and data engineering engagements.
           Details anonymised where required.
         </p>
-      </section>
-
-      {/* ── Stats bar ────────────────────────────────────────────────────── */}
-      <section className="mt-10 rounded-2xl bg-gray-50 px-8 py-8">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-          {STATS.map((stat) => (
-            <div key={stat.label}>
-              <p className="font-serif text-2xl font-bold text-primary sm:text-3xl">
-                {stat.value}
-              </p>
-              <p className="mt-1 text-xs text-secondary">{stat.label}</p>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* ── Featured highlight ────────────────────────────────────────────── */}
