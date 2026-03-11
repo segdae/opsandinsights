@@ -63,48 +63,73 @@ These are 5–50K follower creators who will actually engage back. This is where
 
 ---
 
+### VC & Startup Voices (39 profiles)
+
+Prominent VCs, tech founders, and operators who post nuanced takes on AI, technology, and innovation.
+
+| Command | What it opens | Count | Who |
+|---|---|---|---|
+| `--vc` | All VC & Startup voices | 39 | Everything below |
+| `--vc-partners` | VC Partners | 20 | Vinod Khosla, Hemant Taneja, Pat Grady, Alfred Lin, Konstantine Buhler, Andrew Chen, Martin Casado, Chris Dixon, Raghu Raghuram, Trae Stephens, Harry Stebbings, Sarah Tavel, Byron Deeter, Jerry Chen, Nabeel Hyatt, Tomasz Tunguz, Deedy Das, Logan Bartlett, Matt Turck, Semil Shah |
+| `--vc-founders` | Tech Founders & CEOs | 12 | Palmer Luckey, Garry Tan, Satya Nadella, Jensen Huang, Reid Hoffman, Chamath Palihapitiya, David Sacks, Jason Calacanis, David Friedberg, Balaji Srinivasan, Nikita Bier, Cathie Wood |
+| `--vc-solo` | Solo GPs, Angels & Operators | 7 | Josh Wolfe, Elad Gil, Benedict Evans, Oren Zeev, Mike Solana, Emmett Shear, Brad Feld |
+
+---
+
 ### Combined
 
 | Command | What it opens | Count |
 |---|---|---|
-| `--all` | Everything — Dream 30 + Rising | 70+ |
+| `--all` | Everything — Dream 30 + Rising + VC | 109 |
 
 ---
 
-## Suggested Daily Routines
+## 5-Day Rotation Strategy
 
-### Morning Engagement (15 min)
+Full details in `rotation-strategy.md`. Summary below — designed around LinkedIn's ~20–30 comment/day safe limit.
 
+### Monday — Automation & Builders
 ```bash
-# Dream 30 Tier 1 — comment on their latest posts
+bash "Content Creation/open-linkedin-engagement.sh" --rising-auto
+bash "Content Creation/open-linkedin-engagement.sh" --rising-builders
+bash "Content Creation/open-linkedin-engagement.sh" --rising-agents
 bash "Content Creation/open-linkedin-engagement.sh" --dream-tier1
 ```
+Target: 18–23 comments
 
-### Peer Engagement (15 min)
-
+### Tuesday — VC & Startup World
 ```bash
-# Rotate through Rising categories each day
-# Monday:    --rising-auto
-# Tuesday:   --rising-labs
-# Wednesday: --rising-builders + --rising-pm
-# Thursday:  --rising-agents + --rising-tools
-# Friday:    --rising-devrel + --rising-bip
-bash "Content Creation/open-linkedin-engagement.sh" --rising-auto
+bash "Content Creation/open-linkedin-engagement.sh" --vc
+bash "Content Creation/open-linkedin-engagement.sh" --dream-tier1
 ```
+Target: 20–25 comments
 
-### Weekend Deep Session (30 min)
-
+### Wednesday — AI Tools, PMs & DevRel
 ```bash
-# Open all Rising creators — deep engagement pass
-bash "Content Creation/open-linkedin-engagement.sh" --rising
+bash "Content Creation/open-linkedin-engagement.sh" --rising-tools
+bash "Content Creation/open-linkedin-engagement.sh" --rising-pm
+bash "Content Creation/open-linkedin-engagement.sh" --rising-devrel
+bash "Content Creation/open-linkedin-engagement.sh" --dream-tier2
 ```
+Target: 18–23 comments
 
-### Full Network Blitz (45 min, weekly)
-
+### Thursday — Frontier Labs & Notion
 ```bash
-# Everything — use sparingly, ~70 tabs
-bash "Content Creation/open-linkedin-engagement.sh" --all
+bash "Content Creation/open-linkedin-engagement.sh" --rising-labs
+bash "Content Creation/open-linkedin-engagement.sh" --rising-notion
+bash "Content Creation/open-linkedin-engagement.sh" --rising-bip
+bash "Content Creation/open-linkedin-engagement.sh" --dream-tier1
 ```
+Target: 15–20 comments
+
+### Friday — VC Round 2 + Dream 30 Sweep
+```bash
+bash "Content Creation/open-linkedin-engagement.sh" --vc
+bash "Content Creation/open-linkedin-engagement.sh" --dream-tier3
+```
+Target: 18–25 comments
+
+**Weekly total: 89–116 comments**
 
 ---
 
@@ -128,6 +153,8 @@ Use the 3-layer approach on every comment:
 | Dream 30 profiles | `RESEARCH/linkedin-dream-30/dream-30.md` | Full profiles for 30 big creators with strategic notes |
 | Engagement playbook | `RESEARCH/linkedin-dream-30/engagement-playbook.md` | 30-day activation plan, comment strategy, collaboration ladder |
 | Rising creators | `RESEARCH/linkedin-dream-30/rising-30.md` | Full profiles for 40+ smaller creators by niche |
+| VC & Startup voices | `RESEARCH/linkedin-dream-30/vc-startup-40.md` | Full profiles for 39 VCs, founders & operators |
+| Rotation strategy | `RESEARCH/linkedin-dream-30/rotation-strategy.md` | 5-day engagement rotation with daily comment targets |
 | This guide | `RESEARCH/linkedin-dream-30/SCRIPTS.md` | You are here |
 
 ---

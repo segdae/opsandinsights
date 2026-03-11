@@ -17,7 +17,11 @@
 #   --rising-builders AI Builders & Developers (4)
 #   --rising-labs     Frontier Lab Voices (8)
 #   --rising-devrel   AI Developer Advocates (6)
-#   --all             Everything — Dream 30 + Rising (70+)
+#   --vc              VC & Startup voices (39)
+#   --vc-partners     VC Partners only (20)
+#   --vc-founders     Tech Founders & CEOs only (12)
+#   --vc-solo         Solo GPs, Angels & Operators (7)
+#   --all             Everything — Dream 30 + Rising + VC (109)
 #   (no flag)         Shows usage
 
 # ── Dream 30 ──────────────────────────────────────────────
@@ -153,6 +157,60 @@ RISING_ASPIRATIONAL=(
   "https://linkedin.com/in/aagupta"              # Aakash Gupta
 )
 
+# ── VC & Startup: Partners (20) ──────────────────────────
+
+VC_PARTNERS=(
+  "https://linkedin.com/in/vinod-khosla-65387416"       # Vinod Khosla (Khosla Ventures)
+  "https://linkedin.com/in/hemanttaneja"                 # Hemant Taneja (General Catalyst)
+  "https://linkedin.com/in/gradypb"                      # Pat Grady (Sequoia)
+  "https://linkedin.com/in/alfredlin"                    # Alfred Lin (Sequoia)
+  "https://linkedin.com/in/konstantinebuhler"            # Konstantine Buhler (Sequoia)
+  "https://linkedin.com/in/andrewchen"                   # Andrew Chen (a16z)
+  "https://linkedin.com/in/martincasado"                 # Martin Casado (a16z)
+  "https://linkedin.com/in/chris-dixon-9599b127b"        # Chris Dixon (a16z crypto)
+  "https://linkedin.com/in/raghuraghuram"                # Raghu Raghuram (a16z)
+  "https://linkedin.com/in/trae-stephens-485a811"        # Trae Stephens (Founders Fund / Anduril)
+  "https://linkedin.com/in/harrystebbings"               # Harry Stebbings (20VC)
+  "https://linkedin.com/in/sarahtavel"                   # Sarah Tavel (Benchmark)
+  "https://linkedin.com/in/byrondeeter"                  # Byron Deeter (Bessemer)
+  "https://linkedin.com/in/jerrychenprofile"             # Jerry Chen (Greylock)
+  "https://linkedin.com/in/nabeelhyatt"                  # Nabeel Hyatt (Spark Capital)
+  "https://linkedin.com/in/tomasztunguz"                 # Tomasz Tunguz (Theory Ventures)
+  "https://linkedin.com/in/debarghyadas"                 # Deedy Das (Menlo Ventures)
+  "https://linkedin.com/in/loganbartlett"                # Logan Bartlett (Redpoint)
+  "https://linkedin.com/in/turck"                        # Matt Turck (FirstMark)
+  "https://linkedin.com/in/semilshah"                    # Semil Shah (Haystack / Lightspeed)
+)
+
+# ── VC & Startup: Tech Founders & CEOs (12) ─────────────
+
+VC_FOUNDERS=(
+  "https://linkedin.com/in/palmer-luckey-21a16959"       # Palmer Luckey (Anduril / Oculus)
+  "https://linkedin.com/in/garrytan"                     # Garry Tan (Y Combinator)
+  "https://linkedin.com/in/satyanadella"                 # Satya Nadella (Microsoft)
+  "https://linkedin.com/in/jenhsunhuang"                 # Jensen Huang (NVIDIA)
+  "https://linkedin.com/in/reidhoffman"                  # Reid Hoffman (LinkedIn / Greylock)
+  "https://linkedin.com/in/chamath"                      # Chamath Palihapitiya (Social Capital)
+  "https://linkedin.com/in/davidoliversacks"             # David Sacks (Craft Ventures / All-In)
+  "https://linkedin.com/in/jasoncalacanis"               # Jason Calacanis (Angel / All-In)
+  "https://linkedin.com/in/davidfriedberg"               # David Friedberg (Production Board / All-In)
+  "https://linkedin.com/in/balajissrinivasan"            # Balaji Srinivasan (Network State)
+  "https://linkedin.com/in/nikitabier"                   # Nikita Bier (X / TBH / Gas)
+  "https://linkedin.com/in/catherinedwood"               # Cathie Wood (ARK Invest)
+)
+
+# ── VC & Startup: Solo GPs, Angels & Operators (7) ──────
+
+VC_SOLO=(
+  "https://linkedin.com/in/josh-wolfe-7883"              # Josh Wolfe (Lux Capital)
+  "https://linkedin.com/in/eladgil"                      # Elad Gil (Gil Capital)
+  "https://linkedin.com/in/benedictevans"                # Benedict Evans (Independent / ex-a16z)
+  "https://linkedin.com/in/ozeev"                        # Oren Zeev (Zeev Ventures)
+  "https://linkedin.com/in/michael-solana-2484a644"      # Mike Solana (Founders Fund / Pirate Wires)
+  "https://linkedin.com/in/emmettshear"                  # Emmett Shear (Stem AI / ex-Twitch)
+  "https://linkedin.com/in/bfeld"                        # Brad Feld (Foundry / Techstars)
+)
+
 # ── Functions ─────────────────────────────────────────────
 
 open_urls() {
@@ -181,6 +239,12 @@ all_dream() {
   open_urls "${DREAM_TIER3[@]}"
 }
 
+all_vc() {
+  open_urls "${VC_PARTNERS[@]}"
+  open_urls "${VC_FOUNDERS[@]}"
+  open_urls "${VC_SOLO[@]}"
+}
+
 # ── Main ──────────────────────────────────────────────────
 
 case "${1:-help}" in
@@ -198,10 +262,15 @@ case "${1:-help}" in
   --rising-builders) echo "Opening Rising: AI Builders (4)...";      open_urls "${RISING_BUILDERS[@]}" ;;
   --rising-labs)    echo "Opening Rising: Frontier Labs (8)...";     open_urls "${RISING_LABS[@]}" ;;
   --rising-devrel)  echo "Opening Rising: AI DevRel (6)...";         open_urls "${RISING_DEVREL[@]}" ;;
+  --vc)             echo "Opening VC & Startup (39 profiles)...";    all_vc ;;
+  --vc-partners)    echo "Opening VC Partners (20)...";              open_urls "${VC_PARTNERS[@]}" ;;
+  --vc-founders)    echo "Opening Tech Founders & CEOs (12)...";     open_urls "${VC_FOUNDERS[@]}" ;;
+  --vc-solo)        echo "Opening Solo GPs & Angels (7)...";         open_urls "${VC_SOLO[@]}" ;;
   --all)
-    echo "Opening ALL profiles (70+ total)..."
+    echo "Opening ALL profiles (109 total)..."
     all_dream
     all_rising
+    all_vc
     ;;
   *)
     echo "LinkedIn Engagement Session Opener"
@@ -226,8 +295,14 @@ case "${1:-help}" in
     echo "    --rising-labs     Frontier Lab Voices (8)"
     echo "    --rising-devrel   AI Developer Advocates (6)"
     echo ""
+    echo "  VC & Startup voices:"
+    echo "    --vc              All VC & Startup (39)"
+    echo "    --vc-partners     VC Partners (20)"
+    echo "    --vc-founders     Tech Founders & CEOs (12)"
+    echo "    --vc-solo         Solo GPs, Angels & Operators (7)"
+    echo ""
     echo "  Combined:"
-    echo "    --all             Everything — Dream 30 + Rising (70+)"
+    echo "    --all             Everything — Dream 30 + Rising + VC (109)"
     ;;
 esac
 
